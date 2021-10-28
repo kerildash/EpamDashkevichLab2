@@ -1,0 +1,51 @@
+﻿<Page x:Class="EpamDashkevichLab2.Pages.Newton"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:vm="clr-namespace:EpamDashkevichLab2.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="355"
+      Title="Newton"
+      Background="#ffffff">
+    <Page.DataContext>
+        <vm:NewtonViewModel/>
+    </Page.DataContext>
+    <StackPanel>
+        <TextBlock Text="Вычисление квадратного корня методом ньютона" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        <TextBlock Text="Основание корня" Margin="10,5,10,0"/>
+        <TextBox Text="{Binding RootBase, UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,0"/>
+        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+            <TextBlock Text="Число под корнем" />
+            <TextBlock Text="больше или равно нулю" Margin="5,0,0,0" Foreground="#737373"/>
+        </StackPanel>
+        <TextBox Text="{Binding Number,  UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,0"/>
+        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+            <TextBlock Text="Точность"/>
+            <TextBlock Text="10^(-6) будет достаточно" Margin="5,0,0,0" Foreground="#737373"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+            <TextBlock Text="10^"/>
+            <TextBox Text="{Binding PrecisionPower}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,5,10,0">
+            <TextBlock Text="Начальное приближение" />
+            <TextBlock Text="предположите значение корня" Margin="5,0,0,0" Foreground="#737373"/>
+        </StackPanel>
+        <TextBox Text="{Binding Approximation, UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,0"/>
+        <Button Content="Вычислить корень" Command="{Binding CalculateRoot}" Margin="10,20,10,0" Height="25"/>
+        <Grid>
+            <Image Source="/root.png" Height="30"  HorizontalAlignment="Left" Margin="8,7,10,0"/>
+            <Label Content="{Binding RootBase}" Margin="6,7,-6,-11" FontSize="14"/>
+            <Label Content="{Binding Number}" HorizontalAlignment="Left" Margin="45,14,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="=" HorizontalAlignment="Left" Margin="98,14,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <Label Content="{Binding NewtonRoot}" HorizontalAlignment="Left" Margin="120,14,0,0" VerticalAlignment="Top" FontSize="16"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="7,0,10,0" >
+            <Label Content="Math.Pow():" HorizontalAlignment="Left" FontSize="15" Foreground="#737373"/>
+            <Label Content="{Binding Root}" HorizontalAlignment="Left" Margin="25,0,0,0" FontSize="16" Foreground="#737373"/>
+
+        </StackPanel>
+
+    </StackPanel>
+</Page>
